@@ -7,7 +7,6 @@ public enum Races {
     HUMAN(
             new String[] {"Jekster", "Leo", "Werloi", "Merher", "Pakma", "Huim", "Laim", "Pterhe"},
             new String[] {"Warrior", "Mage", "Archer", "Assassin"},
-            "Human",
             new double[] {500, 350, 300, 300},
             new double[] {36, 15, 15, 36},
             new double[] {20, 100, 50, 50}
@@ -15,7 +14,6 @@ public enum Races {
     VOIDBORN(
             new String[] {"Xar'Zex", "Ler'Jow", "Mer'Hyz", "Vel'Maw", "Kog'Xei", "Kha'Ryo", "Per'Xez", "Ler'Mex", "Fol'Xai"},
             new String[] {"Warrior", "Mage", "Archer", "Assassin"},
-            "Voidborn",
             new double[] {500, 350, 300, 300},
             new double[] {38, 17, 17, 38},
             new double[] {20, 100, 50, 50}
@@ -23,7 +21,6 @@ public enum Races {
     GOLEM(
             new String[] {"Golstrike", "Golemus", "Golcrank", "Barkcramk", "Lerfcrank", "Nullhexor", "Trofus", "Bromus"},
             new String[] {"Warrior", "Mage"},
-            "Golem",
             new double[] {500, 350},
             new double[] {38, 17},
             new double[] {20, 100}
@@ -31,7 +28,6 @@ public enum Races {
     DEMON(
             new String[] {"Hexfel", "Furcifer", "Helcifer", "Aoexhel", "Gropem", "Freoim", "Oepenhel", "Joxhcifer"},
             new String[] {"Warrior", "Mage", "Assassin"},
-            "Demon",
             new double[] {500, 350, 300},
             new double[] {38, 17, 38},
             new double[] {20, 100, 50}
@@ -39,7 +35,6 @@ public enum Races {
     YORDLE(
             new String[] {"Borko", "Lompex", "Jawphite", "Freoi", "Joiv", "Staziz", "Kermal", "Korst"},
             new String[] {"Warrior", "Mage", "Archer", "Assassin"},
-            "Yordle",
             new double[] {500, 350, 300, 300},
             new double[] {35, 14, 14, 35},
             new double[] {20, 100, 50, 50}
@@ -47,7 +42,6 @@ public enum Races {
     WRAITH(
             new String[] {"Owerjfe", "Vaarshajs", "Deruoi", "Gerioem", "Karfeir", "Zierkeif", "Kerefev", "Losadef"},
             new String[] {"Warrior", "Mage", "Archer"},
-            "Wraith",
             new double[] {500, 350, 300},
             new double[] {36, 15, 15},
             new double[] {20, 100, 50}
@@ -55,7 +49,6 @@ public enum Races {
     TROLL(
             new String[] {"Trondel", "Trundel", "Frondel", "Frundel", "Grondel", "Grundel", "Frondel", "Frundel"},
             new String[] {"Warrior"},
-            "Troll",
             new double[] {500},
             new double[] {46},
             new double[] {20}
@@ -63,7 +56,6 @@ public enum Races {
     VASTAYA(
             new String[] {"Zeuistey", "Lerefey", "Perxes", "Foerlei", "Aerlei", "Axofero", "Nomberle", "Perferele"},
             new String[] {"Warrior", "Mage", "Archer"},
-            "Vastaya",
             new double[] {500, 350, 300},
             new double[] {36, 15, 15},
             new double[] {20, 100, 50}
@@ -71,26 +63,23 @@ public enum Races {
 
     private String[] name;
     private String[] role;
-    private String race;
     private double[] hp;
     private double[] dmg;
     private double[] mana;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
 
-    Races(String[] name, String[] role, String race, double[] hp, double[] dmg, double[] mana) {
+    Races(String[] name, String[] role, double[] hp, double[] dmg, double[] mana) {
         this.name = name;
         this.role = role;
-        this.race = race;
         this.hp = hp;
         this.dmg = dmg;
         this.mana = mana;
     }
 
-    Races(String[] name, String[] role, String race, double[] hp, double[] dmg, double[] mana, Weapon equippedWeapon, Armor equippedArmor) {
+    Races(String[] name, String[] role, double[] hp, double[] dmg, double[] mana, Weapon equippedWeapon, Armor equippedArmor) {
         this.name = name;
         this.role = role;
-        this.race = race;
         this.hp = hp;
         this.dmg = dmg;
         this.mana = mana;
@@ -112,14 +101,6 @@ public enum Races {
 
     public void setRole(String[] role) {
         this.role = role;
-    }
-
-    public String getRace() {
-        return race;
-    }
-
-    public void setRace(String race) {
-        this.race = race;
     }
 
     public double[] getHp() {

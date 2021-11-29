@@ -7,12 +7,13 @@ import com.company.Items.Weapon;
 
 public class Enemy extends Entity implements IFight {
 
-    public Enemy(String name, String role, String race, double hp, double dmg, double mana) {
-        super(name, role, race, hp, dmg, mana);
+
+    public Enemy(String name, double lvl, Races race, String role, double hp, double dmg, double mana) {
+        super(name, lvl, race, role, hp, dmg, mana);
     }
 
-    public Enemy(String name, String role, String race, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
-        super(name, role, race, hp, dmg, mana, equippedWeapon, equippedArmor);
+    public Enemy(String name, double lvl, Races race, String role, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
+        super(name, lvl, race, role, hp, dmg, mana, equippedWeapon, equippedArmor);
     }
 
     @Override
@@ -37,6 +38,6 @@ public class Enemy extends Entity implements IFight {
 
     @Override
     public String toString() {
-        return "Enemy{" + super.toString() + '}';
+        return "Enemy {" + super.toString() + '}';
     }
 }
