@@ -9,17 +9,12 @@ public class Creation {
     private static int count = 0;
     public static Races race;
     public static int role;
+    private static String sRace;
+    private static int iRace;
 
     public static void enterRace() {
-        switch (Main.scan.nextLine().toLowerCase()) {
-            case "human" -> race = Races.HUMAN;
-            case "voidborn" -> race = Races.VOIDBORN;
-            case "golem" -> race = Races.GOLEM;
-            case "demon" -> race = Races.DEMON;
-            case "yordle" -> race = Races.YORDLE;
-            case "wraith" -> race = Races.WRAITH;
-            case "troll" -> race = Races.TROLL;
-            case "vastaya" -> race = Races.VASTAYA;
+        switch (sRace = Main.scan.nextLine().toLowerCase()) {
+            case "human", "voidborn", "golem", "demon", "yordle", "wraith", "troll", "vastaya" -> race = Races.valueOf(sRace.toUpperCase());
             default -> {
                 System.out.println("Invalid input");
                 enterRace();
@@ -27,16 +22,19 @@ public class Creation {
         }
     }
 
+    private static void doDefault() {
+        System.out.println("Invalid input");
+        enterRole();
+    }
+
     public static void enterRole() {
-        //role = Main.scan.nextInt();
-        switch (Main.scan.nextInt()) {
-            case 0 -> {
-                if (race.getRole()[0] !=)
-                role = 0;
+        switch (iRace = Main.scan.nextInt()) {
+            case 0, 1, 2, 3 -> {
+                if (Races.valueOf(sRace.toUpperCase()).equals(Races.TROLL) && iRace > 0) doDefault();
+                role = iRace;
             }
             default -> {
-                System.out.println("Invalid input");
-                enterRole();
+                doDefault();
             }
         }
     }

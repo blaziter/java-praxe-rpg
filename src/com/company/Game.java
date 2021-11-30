@@ -38,9 +38,7 @@ public class Game {
         System.out.println("1 - Show character statuses");
         System.out.println("2 - Enter a shop");
         System.out.println("3 - Manage inventory");
-        System.out.println("4 - Save game");
-        System.out.println("5 - Load game");
-        System.out.println("6 - Exit");
+        System.out.println("4 - Exit");
     }
 
     public static void game() {
@@ -57,6 +55,11 @@ public class Game {
                 for (int i = 0; i < Characters.values().length; i++) {
                     if (Characters.values()[i].getPlayer() != null) System.out.println(Characters.values()[i].getPlayer());
                 }
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 game();
             }
             case 2 -> {
@@ -66,7 +69,7 @@ public class Game {
             case 3 -> {
                 game();
             }
-            case 6 -> {
+            case 4 -> {
                 exit();
             }
             default -> {
@@ -140,10 +143,11 @@ public class Game {
     }
 
     public static void exit() {
+        Main.scan.nextLine();
         System.out.println("Are you sure? y / n");
         switch (Main.scan.nextLine()) {
             case "y", "yes" -> {
-                return;
+                System.exit(0);
             }
             case "n", "no" -> {
                 game();
