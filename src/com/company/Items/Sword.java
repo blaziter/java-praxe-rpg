@@ -1,7 +1,6 @@
 package com.company.Items;
 
-
-public class Sword extends Item{
+public class Sword extends Item {
     /*SERPENTS_FANG("Serpent's Fang" , 61),
     STORMRAZOR("Stormrazor", 67, 0, 0.2),
     MURAMANA("Muramana", 65),
@@ -18,22 +17,22 @@ public class Sword extends Item{
     double crit;
     double lifeSteal;
 
-    Sword (String name, double dmg) {
+    public Sword(String name, double dmg) {
         this.name = name;
         this.dmg = dmg;
     }
 
-    Sword(String name, double dmg, double lifeSteal) {
+    public Sword(String name, double dmg, double crit) {
         this.name = name;
         this.dmg = dmg;
-        this.lifeSteal = lifeSteal;
-    }
-
-    Sword(String name, double dmg, double lifeSteal, double crit) {
-        this.name = name;
-        this.dmg = dmg;
-        this.lifeSteal = lifeSteal;
         this.crit = crit;
+    }
+
+    public Sword(String name, double dmg, double crit, double lifeSteal) {
+        this.name = name;
+        this.dmg = dmg;
+        this.crit = crit;
+        this.lifeSteal = lifeSteal;
     }
 
     public String getName() {

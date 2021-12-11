@@ -1,28 +1,11 @@
 package com.company.Items;
 
 public abstract class Item {
-    /*public static Sword SF = Sword.SERPENTS_FANG;
-    public static Sword SR = Sword.STORMRAZOR;
-    public static Sword MM = Sword.MURAMANA;
-    public static Sword YG = Sword.YOUMUUS_GHOSTBLADE;
-    public static Sword WE = Sword.WITS_END;
-    public static Sword DD = Sword.DEATHS_DANCE;
-    public static Sword BOTRK = Sword.BOTRK;
-    public static Sword DUSKBLADE = Sword.DUSKBLADE;
-    public static Sword IE = Sword.IE;
-    public static Sword BT = Sword.BLOODTHIRSTER;*/
-
-    public enum Type {
-        Weapon,
-        Armor,
-        Potion
-    }
-
-    private Type type;
     private String name;
     private double dmg;
     private double crit;
     private double lifeSteal;
+    private double hp;
 
     public String getName() {
         return name;
@@ -54,5 +37,13 @@ public abstract class Item {
 
     public void setLifeSteal(double lifeSteal) {
         this.lifeSteal = lifeSteal;
+    }
+
+    public double getHp() {
+        return hp;
+    }
+
+    public void setHp(double hp) {
+        this.hp = hp;
     }
 }

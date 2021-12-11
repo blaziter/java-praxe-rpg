@@ -1,18 +1,16 @@
 package com.company.Entities;
 
-import com.company.IFight;
-import com.company.Items.Armor;
 import com.company.Items.Item;
-import com.company.Items.Weapon;
 
 public class Enemy extends Entity implements IFight {
 
-    public Enemy(String name, String role, String race, double hp, double dmg, double mana) {
-        super(name, role, race, hp, dmg, mana);
+
+    public Enemy(String name, double lvl, Races race, String role, double hp, double dmg) {
+        super(name, lvl, race, role, hp, dmg);
     }
 
-    public Enemy(String name, String role, String race, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
-        super(name, role, race, hp, dmg, mana, equippedWeapon, equippedArmor);
+    public Enemy(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
+        super(name, lvl, race, role, hp, dmg, equippedWeapon, equippedArmor);
     }
 
     @Override
@@ -26,17 +24,7 @@ public class Enemy extends Entity implements IFight {
     }
 
     @Override
-    public void useItem() {
-
-    }
-
-    @Override
-    public void spell() {
-
-    }
-
-    @Override
     public String toString() {
-        return "Enemy{" + super.toString() + '}';
+        return "Enemy {" + super.toString() + '}';
     }
 }

@@ -1,39 +1,20 @@
 package com.company.Entities;
 
-import com.company.IFight;
-import com.company.Items.Armor;
 import com.company.Items.IEquipment;
 import com.company.Items.Item;
-import com.company.Items.Weapon;
 
-public class Player extends Entity implements IFight, IEquipment {
+public class Player extends Entity implements IEquipment {
 
-    public Player(String name, String role, String race, double hp, double dmg, double mana) {
-        super(name, role, race, hp, dmg, mana);
+    public Player() {
+        super();
     }
 
-    public Player(String name, String role, String race, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
-        super(name, role, race, hp, dmg, mana, equippedWeapon, equippedArmor);
+    public Player(String name, double lvl, Races race, String role, double hp, double dmg) {
+        super(name, lvl, race, role, hp, dmg);
     }
 
-    @Override
-    public void attack() {
-        System.out.println("Dealt " + getEquippedWeapon().getDmg());
-    }
-
-    @Override
-    public void block() {
-
-    }
-
-    @Override
-    public void useItem() {
-
-    }
-
-    @Override
-    public void spell() {
-
+    public Player(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
+        super(name, lvl, race, role, hp, dmg, equippedWeapon, equippedArmor);
     }
 
     @Override
@@ -53,6 +34,6 @@ public class Player extends Entity implements IFight, IEquipment {
 
     @Override
     public String toString() {
-        return "Player{" + super.toString() + '}';
+        return "Player {" + super.toString() + '}';
     }
 }

@@ -1,37 +1,39 @@
 package com.company.Entities;
 
-import com.company.Items.Armor;
 import com.company.Items.Item;
-import com.company.Items.Weapon;
 
 public abstract class Entity  {
     private String name;
+    private double lvl;
     private String role;
-    private String race;
+    private Races race;
     private double hp;
     private double dmg;
-    private double mana;
     private Item equippedWeapon;
     private Item equippedArmor;
 
-    public Entity(String name, String role, String race, double hp, double dmg, double mana) {
+    public Entity(String name, double lvl, Races race, String role, double hp, double dmg) {
         this.name = name;
-        this.role = role;
+        this.lvl = lvl;
         this.race = race;
-        this.hp = hp;
+        this.role = role;
+        this.hp = Math.floor(hp + (this.lvl * 35.92));
         this.dmg = dmg;
-        this.mana = mana;
     }
 
-    public Entity(String name, String role, String race, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
+    public Entity(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
         this.name = name;
-        this.role = role;
+        this.lvl = lvl;
         this.race = race;
-        this.hp = hp;
-        this.dmg = dmg;
-        this.mana = mana;
+        this.role = role;
+        this.hp = Math.floor(hp + (this.lvl * 35.92) + equippedArmor.getHp());
+        this.dmg = dmg + equippedWeapon.getDmg();
         this.equippedWeapon = equippedWeapon;
         this.equippedArmor = equippedArmor;
+    }
+
+    public Entity() {
+
     }
 
 
@@ -43,6 +45,14 @@ public abstract class Entity  {
         this.name = name;
     }
 
+    public double getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(double lvl) {
+        this.lvl = lvl;
+    }
+
     public String getRole() {
         return role;
     }
@@ -51,11 +61,11 @@ public abstract class Entity  {
         this.role = role;
     }
 
-    public String getRace() {
+    public Races getRace() {
         return race;
     }
 
-    public void setRace(String race) {
+    public void setRace(Races race) {
         this.race = race;
     }
 
@@ -73,14 +83,6 @@ public abstract class Entity  {
 
     public void setDmg(double dmg) {
         this.dmg = dmg;
-    }
-
-    public double getMana() {
-        return mana;
-    }
-
-    public void setMana(double mana) {
-        this.mana = mana;
     }
 
     public Item getEquippedWeapon() {
@@ -102,11 +104,11 @@ public abstract class Entity  {
     @Override
     public String toString() {
         return  "name='" + name + '\'' +
-                ", role='" + role + '\'' +
+                ", lvl=" + lvl +
                 ", race='" + race + '\'' +
+                ", role='" + role + '\'' +
                 ", hp=" + hp +
                 ", dmg=" + dmg +
-                ", mana=" + mana +
                 ", equippedWeapon=" + equippedWeapon +
                 ", equippedArmor=" + equippedArmor;
     }
