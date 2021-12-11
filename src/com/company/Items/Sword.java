@@ -1,6 +1,6 @@
 package com.company.Items;
 
-public class Sword extends Item{
+public class Sword extends Item {
     /*SERPENTS_FANG("Serpent's Fang" , 61),
     STORMRAZOR("Stormrazor", 67, 0, 0.2),
     MURAMANA("Muramana", 65),

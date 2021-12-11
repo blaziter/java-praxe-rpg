@@ -7,10 +7,10 @@ import java.util.Arrays;
 public class Creation {
 
     private static int count = 0;
-    public static Races race;
-    public static int role;
+    private static Races race;
+    private static int role;
     private static String sRace;
-    private static int iRace;
+    private static String iRole;
 
     public static void enterRace() {
         switch (sRace = Main.scan.nextLine().toLowerCase()) {
@@ -23,15 +23,29 @@ public class Creation {
     }
 
     private static void doDefault() {
-        System.out.println("Invalid input");
+        System.out.println("Wrong role for a race!");
         enterRole();
     }
 
+    private static void wrongRace() {
+        if (iRole.toUpperCase().equals(Races.GOLEM) || iRole.toUpperCase().equals(Races.TROLL)) doDefault();
+    }
+
     public static void enterRole() {
-        switch (iRace = Main.scan.nextInt()) {
-            case 0, 1, 2, 3 -> {
-                if (Races.valueOf(sRace.toUpperCase()).equals(Races.TROLL) && iRace > 0) doDefault();
-                role = iRace;
+        switch (iRole = Main.scan.nextLine().toLowerCase()) {
+            case "warrior" -> {
+                role = 0;
+                return;
+            }
+            case "archer" -> {
+                wrongRace();
+                role = 1;
+                return;
+            }
+            case "assassin" -> {
+                wrongRace();
+                role = 2;
+                return;
             }
             default -> {
                 doDefault();
@@ -51,11 +65,10 @@ public class Creation {
         System.out.println("What is your desired race? Available: " + Arrays.toString(Races.values()));
         enterRace();
 
-        System.out.println("What is your desired role? Available: " + Arrays.toString(Races.valueOf(race.toString()).getRole()) + "\nEnter your role as a number from range 0 to " + (Races.valueOf(race.toString()).getRole().length - 1));
+        System.out.println("What is your desired role? Available: " + Arrays.toString(Races.valueOf(race.toString()).getRole()));
         enterRole();
 
-        Main.scan.nextLine();
-        Player player = new Player(name, 1, race, race.getRole()[role], race.getHp()[role], race.getDmg()[role],race.getMana()[role]);
+        Player player = new Player(name, 1, race, race.getRole()[role], race.getHp()[role], race.getDmg()[role]);
         switch (count) {
             case 1 -> {
                 Characters.FIRST_CHARACTER.setPlayer(player);

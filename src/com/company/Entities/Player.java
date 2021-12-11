@@ -1,43 +1,20 @@
 package com.company.Entities;
 
-import com.company.IFight;
 import com.company.Items.IEquipment;
 import com.company.Items.Item;
 
-public class Player extends Entity implements IFight, IEquipment {
+public class Player extends Entity implements IEquipment {
 
     public Player() {
         super();
     }
 
-    public Player(String name, double lvl, Races race, String role, double hp, double dmg, double mana) {
-        super(name, lvl, race, role, hp, dmg, mana);
+    public Player(String name, double lvl, Races race, String role, double hp, double dmg) {
+        super(name, lvl, race, role, hp, dmg);
     }
 
-    public Player(String name, double lvl, Races race, String role, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
-        super(name, lvl, race, role, hp, dmg, mana, equippedWeapon, equippedArmor);
-    }
-
-    @Override
-    public void attack() {
-        System.out.println("Dealt " + super.getDmg());
-    }
-
-
-
-    @Override
-    public void block() {
-
-    }
-
-    @Override
-    public void useItem() {
-
-    }
-
-    @Override
-    public void spell() {
-
+    public Player(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
+        super(name, lvl, race, role, hp, dmg, equippedWeapon, equippedArmor);
     }
 
     @Override

@@ -1,14 +1,6 @@
 package com.company.Items;
 
 public abstract class Item {
-
-    public enum Type {
-        Weapon,
-        Armor,
-        Potion
-    }
-
-    private Type type;
     private String name;
     private double dmg;
     private double crit;

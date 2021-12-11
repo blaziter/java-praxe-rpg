@@ -6,59 +6,51 @@ import com.company.Items.Weapon;
 public enum Races {
     HUMAN(
             new String[] {"Jekster", "Leo", "Werloi", "Merher", "Pakma", "Huim", "Laim", "Pterhe"},
-            new String[] {"Warrior", "Mage", "Archer", "Assassin"},
-            new double[] {500, 350, 300, 300},
-            new double[] {36, 15, 15, 36},
-            new double[] {20, 100, 50, 50}
+            new String[] {"Warrior", "Archer", "Assassin"},
+            new double[] {500, 300, 300},
+            new double[] {36, 15, 36}
     ),
     VOIDBORN(
-            new String[] {"Xar'Zex", "Ler'Jow", "Mer'Hyz", "Vel'Maw", "Kog'Xei", "Kha'Ryo", "Per'Xez", "Ler'Mex", "Fol'Xai"},
-            new String[] {"Warrior", "Mage", "Archer", "Assassin"},
-            new double[] {500, 350, 300, 300},
-            new double[] {38, 17, 17, 38},
-            new double[] {20, 100, 50, 50}
+            new String[] {"Xar'Zex", "Ler'Jow", "Mer'Hyz", "Vel'Maw", "Kog'Xei", "Kha'Ryo", "Per'Xez", "Ler'Mex"},
+            new String[] {"Warrior", "Archer", "Assassin"},
+            new double[] {500, 300, 300},
+            new double[] {38, 17, 38}
     ),
     GOLEM(
             new String[] {"Golstrike", "Golemus", "Golcrank", "Barkcramk", "Lerfcrank", "Nullhexor", "Trofus", "Bromus"},
-            new String[] {"Warrior", "Mage"},
-            new double[] {500, 350},
-            new double[] {38, 17},
-            new double[] {20, 100}
+            new String[] {"Warrior"},
+            new double[] {500},
+            new double[] {38}
     ),
     DEMON(
             new String[] {"Hexfel", "Furcifer", "Helcifer", "Aoexhel", "Gropem", "Freoim", "Oepenhel", "Joxhcifer"},
-            new String[] {"Warrior", "Mage", "Assassin"},
-            new double[] {500, 350, 300},
-            new double[] {38, 17, 38},
-            new double[] {20, 100, 50}
+            new String[] {"Warrior", "Archer", "Assassin"},
+            new double[] {500, 300, 300},
+            new double[] {38, 17, 38}
     ),
     YORDLE(
             new String[] {"Borko", "Lompex", "Jawphite", "Freoi", "Joiv", "Staziz", "Kermal", "Korst"},
-            new String[] {"Warrior", "Mage", "Archer", "Assassin"},
-            new double[] {500, 350, 300, 300},
-            new double[] {35, 14, 14, 35},
-            new double[] {20, 100, 50, 50}
+            new String[] {"Warrior", "Archer", "Assassin"},
+            new double[] {500, 300, 300},
+            new double[] {35, 14, 35}
     ),
     WRAITH(
             new String[] {"Owerjfe", "Vaarshajs", "Deruoi", "Gerioem", "Karfeir", "Zierkeif", "Kerefev", "Losadef"},
-            new String[] {"Warrior", "Mage", "Archer"},
-            new double[] {500, 350, 300},
-            new double[] {36, 15, 15},
-            new double[] {20, 100, 50}
+            new String[] {"Warrior", "Archer", "Assassin"},
+            new double[] {500, 300},
+            new double[] {36, 15}
     ),
     TROLL(
             new String[] {"Trondel", "Trundel", "Frondel", "Frundel", "Grondel", "Grundel", "Frondel", "Frundel"},
             new String[] {"Warrior"},
             new double[] {500},
-            new double[] {46},
-            new double[] {20}
+            new double[] {46}
     ),
     VASTAYA(
             new String[] {"Zeuistey", "Lerefey", "Perxes", "Foerlei", "Aerlei", "Axofero", "Nomberle", "Perferele"},
-            new String[] {"Warrior", "Mage", "Archer"},
-            new double[] {500, 350, 300},
-            new double[] {36, 15, 15},
-            new double[] {20, 100, 50}
+            new String[] {"Warrior", "Archer", "Assassin"},
+            new double[] {500, 300},
+            new double[] {36, 15}
     );
 
     private String[] name;
@@ -69,20 +61,18 @@ public enum Races {
     private Weapon equippedWeapon;
     private Armor equippedArmor;
 
-    Races(String[] name, String[] role, double[] hp, double[] dmg, double[] mana) {
+    Races(String[] name, String[] role, double[] hp, double[] dmg) {
         this.name = name;
         this.role = role;
         this.hp = hp;
         this.dmg = dmg;
-        this.mana = mana;
     }
 
-    Races(String[] name, String[] role, double[] hp, double[] dmg, double[] mana, Weapon equippedWeapon, Armor equippedArmor) {
+    Races(String[] name, String[] role, double[] hp, double[] dmg, Weapon equippedWeapon, Armor equippedArmor) {
         this.name = name;
         this.role = role;
         this.hp = hp;
         this.dmg = dmg;
-        this.mana = mana;
         this.equippedWeapon = equippedWeapon;
         this.equippedArmor = equippedArmor;
     }
@@ -117,14 +107,6 @@ public enum Races {
 
     public void setDmg(double[] dmg) {
         this.dmg = dmg;
-    }
-
-    public double[] getMana() {
-        return mana;
-    }
-
-    public void setMana(double[] mana) {
-        this.mana = mana;
     }
 
     public Weapon getEquippedWeapon() {

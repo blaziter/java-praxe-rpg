@@ -9,28 +9,25 @@ public abstract class Entity  {
     private Races race;
     private double hp;
     private double dmg;
-    private double mana;
     private Item equippedWeapon;
     private Item equippedArmor;
 
-    public Entity(String name, double lvl, Races race, String role, double hp, double dmg, double mana) {
+    public Entity(String name, double lvl, Races race, String role, double hp, double dmg) {
         this.name = name;
         this.lvl = lvl;
         this.race = race;
         this.role = role;
         this.hp = Math.floor(hp + (this.lvl * 35.92));
         this.dmg = dmg;
-        this.mana = mana;
     }
 
-    public Entity(String name, double lvl, Races race, String role, double hp, double dmg, double mana, Item equippedWeapon, Item equippedArmor) {
+    public Entity(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
         this.name = name;
         this.lvl = lvl;
         this.race = race;
         this.role = role;
         this.hp = Math.floor(hp + (this.lvl * 35.92) + equippedArmor.getHp());
         this.dmg = dmg + equippedWeapon.getDmg();
-        this.mana = mana;
         this.equippedWeapon = equippedWeapon;
         this.equippedArmor = equippedArmor;
     }
@@ -88,14 +85,6 @@ public abstract class Entity  {
         this.dmg = dmg;
     }
 
-    public double getMana() {
-        return mana;
-    }
-
-    public void setMana(double mana) {
-        this.mana = mana;
-    }
-
     public Item getEquippedWeapon() {
         return equippedWeapon;
     }
@@ -115,11 +104,11 @@ public abstract class Entity  {
     @Override
     public String toString() {
         return  "name='" + name + '\'' +
+                ", lvl=" + lvl +
                 ", race='" + race + '\'' +
                 ", role='" + role + '\'' +
                 ", hp=" + hp +
                 ", dmg=" + dmg +
-                ", mana=" + mana +
                 ", equippedWeapon=" + equippedWeapon +
                 ", equippedArmor=" + equippedArmor;
     }
