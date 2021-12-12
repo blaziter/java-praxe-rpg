@@ -3,6 +3,7 @@ package com.company.Game;
 import com.company.Entities.Characters;
 import com.company.Entities.Creation;
 import com.company.Items.Armors;
+import com.company.Items.Inventory;
 import com.company.Items.Swords;
 import com.company.Main;
 
@@ -51,9 +52,9 @@ public class Game {
 
     public static void printOptions() {
         System.out.println("What would you like to do?");
-        System.out.println("0 - Enter a dungeon"); //done but heavily inspired :trole:
+        System.out.println("0 - Enter a dungeon"); //done; fight done, added armor and reduces incoming dmg, dungeon gen done, boss fight done
         System.out.println("1 - Show character statuses"); //done
-        System.out.println("2 - Enter a shop"); //almost done
+        System.out.println("2 - Enter a shop"); //almost done; need to finish buy and sell
         System.out.println("3 - Manage inventory"); //wip
         System.out.println("4 - Exit"); //done
     }
@@ -82,6 +83,7 @@ public class Game {
                 game();
             }
             case 3 -> {
+                Inventory.showOptions();
                 game();
             }
             case 4 -> {

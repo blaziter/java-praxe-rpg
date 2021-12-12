@@ -16,6 +16,7 @@ public class Sword extends Item {
     double dmg;
     double crit;
     double lifeSteal;
+    int cost;
 
     public Sword(String name, double dmg) {
         this.name = name;
@@ -33,6 +34,14 @@ public class Sword extends Item {
         this.dmg = dmg;
         this.crit = crit;
         this.lifeSteal = lifeSteal;
+    }
+
+    public Sword(String name, double dmg, double crit, double lifeSteal, int cost) {
+        this.name = name;
+        this.dmg = dmg;
+        this.crit = crit;
+        this.lifeSteal = lifeSteal;
+        this.cost = cost;
     }
 
     public String getName() {
@@ -65,5 +74,9 @@ public class Sword extends Item {
 
     public void setLifeSteal(double lifeSteal) {
         this.lifeSteal = lifeSteal;
+    }
+
+    public int getCost() {
+        return cost;
     }
 }

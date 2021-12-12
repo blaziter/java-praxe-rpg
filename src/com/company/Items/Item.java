@@ -6,6 +6,7 @@ public abstract class Item {
     private double crit;
     private double lifeSteal;
     private double hp;
+    private double armor;
 
     public String getName() {
         return name;
@@ -45,5 +46,9 @@ public abstract class Item {
 
     public void setHp(double hp) {
         this.hp = hp;
+    }
+
+    public double getArmor() {
+        return armor;
     }
 }

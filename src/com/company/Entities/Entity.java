@@ -103,7 +103,16 @@ public abstract class Entity  {
 
     @Override
     public String toString() {
+        if (equippedArmor != null)
         return  "name='" + name + '\'' +
+                ", lvl=" + lvl +
+                ", race='" + race + '\'' +
+                ", role='" + role + '\'' +
+                ", hp=" + hp +
+                ", dmg=" + dmg +
+                ", equippedWeapon=" + equippedWeapon.getName() +
+                ", equippedArmor=" + equippedArmor.getName();
+        return "name='" + name + '\'' +
                 ", lvl=" + lvl +
                 ", race='" + race + '\'' +
                 ", role='" + role + '\'' +
