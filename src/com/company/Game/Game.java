@@ -52,7 +52,7 @@ public class Game {
 
     public static void printOptions() {
         System.out.println("What would you like to do?");
-        System.out.println("0 - Enter a dungeon"); //done; fight done, added armor and reduces incoming dmg, dungeon gen done, boss fight done
+        System.out.println("0 - Enter a dungeon"); //done; fight done, added armor and reduces incoming dmg, dungeon gen done, boss fight fixed
         System.out.println("1 - Show character statuses"); //done
         System.out.println("2 - Enter a shop"); //almost done; need to finish buy and sell
         System.out.println("3 - Manage inventory"); //wip
@@ -161,7 +161,7 @@ public class Game {
 
     public static void exit() {
         Main.scan.nextLine();
-        System.out.println("Are you sure? y / n");
+        System.out.println("There isn't a saving system!\nAre you sure? y / n");
         switch (Main.scan.nextLine()) {
             case "y", "yes" -> {
                 System.exit(0);

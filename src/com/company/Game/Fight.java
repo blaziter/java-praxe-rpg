@@ -23,7 +23,7 @@ public class Fight {
     }
 
     public static void fight(Player player, Enemy boss) {
-        Enemies.values()[0].setEnemy(boss);
+        isRunning = true;
         while (isRunning) {
             printEntities(player, boss);
             round(player, boss);
@@ -157,8 +157,9 @@ public class Fight {
         if (enemy.getEnemy().getHp() <= 0) {
             isRunning = false;
             int bounty = 300;
+            player.getPlayer().levelUp(player.getPlayer());
             Inventory.golds += bounty;
-            System.out.println("You have slain an enemy! And gained " + bounty);
+            System.out.println("You have slain an enemy! Gained " + bounty + " golds and leveled up!");
             enemy = null;
             return true;
         }
@@ -169,8 +170,9 @@ public class Fight {
         if (boss.getHp() <= 0) {
             isRunning = false;
             int bounty = 1000;
+            player.levelUp(player);
             Inventory.golds += bounty;
-            System.out.println("You have slain an enemy! And gained " + bounty);
+            System.out.println("You have slain an enemy! Gained " + bounty + " golds and leveled up!");
             boss = null;
             return true;
         }

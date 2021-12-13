@@ -41,7 +41,6 @@ public class Dungeon {
                     selected = Main.scan.nextInt();
                     if (selected < 0 || selected > 4 || Characters.values()[selected].getPlayer() == null) System.out.println("Invalid input or your character does not exist");
                 } while (selected < 0 || selected > 4 || Characters.values()[selected].getPlayer() == null);
-
                 Fight.fight(Characters.values()[selected].getPlayer(), Boss.values()[(int) Math.floor(Math.random() * (Boss.values().length - 1))].getBoss());
             }
         }

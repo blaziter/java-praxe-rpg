@@ -31,9 +31,12 @@ public class Player extends Entity implements IEquipment {
     public void unequip() {
 
     }
-
     @Override
     public String toString() {
         return "Player {" + super.toString() + '}';
+    }
+
+    public void levelUp(Player player) {
+        player.setLvl(player.getLvl() + 1);
     }
 }
