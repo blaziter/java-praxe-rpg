@@ -1,5 +1,6 @@
 package com.company.Entities;
 
+import com.company.Items.StarterItems;
 import com.company.Main;
 
 import java.util.Arrays;
@@ -69,6 +70,14 @@ public class Creation {
         enterRole();
 
         Player player = new Player(name, 1, race, race.getRole()[role], race.getHp()[role], race.getDmg()[role]);
+        switch (player.getRole()) {
+            case "Warrior" -> {
+                player.setEquippedWeapon(StarterItems.DS.getItem());
+            }
+            case "Archer", "Assassin" -> {
+                player.setEquippedWeapon(StarterItems.DB.getItem());
+            }
+        }
         switch (count) {
             case 1 -> {
                 Characters.FIRST_CHARACTER.setPlayer(player);

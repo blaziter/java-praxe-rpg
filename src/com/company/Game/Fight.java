@@ -1,6 +1,7 @@
 package com.company.Game;
 
 import com.company.Entities.*;
+import com.company.Items.DropItems;
 import com.company.Items.Inventory;
 import com.company.Main;
 import jaco.mp3.player.MP3Player;
@@ -169,6 +170,7 @@ public class Fight {
             int bounty = 300;
             player.getPlayer().levelUp(player.getPlayer());
             Inventory.golds += bounty;
+            DropItems.getDroppedItem();
             System.out.println("You have slain an enemy! Gained " + bounty + " golds and leveled up!");
             enemy = null;
             return true;
@@ -182,6 +184,7 @@ public class Fight {
             int bounty = 1000;
             player.levelUp(player);
             Inventory.golds += bounty;
+            DropItems.getDroppedItem();
             System.out.println("You have slain an enemy! Gained " + bounty + " golds and leveled up!");
             boss = null;
             return true;

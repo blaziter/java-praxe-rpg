@@ -11,7 +11,7 @@ public class Dungeon {
     private static void setRoomCount() {
         switch (Game.difficulty) {
             case "easy" -> {
-                roomCount = 1;//Math.floor(Math.random() * (8 - 3 + 1) + 3);
+                roomCount = Math.floor(Math.random() * (8 - 3 + 1) + 3);
             }
             case "normal" -> {
                 roomCount = Math.floor(Math.random() * (12 - 5 + 1) + 5);
