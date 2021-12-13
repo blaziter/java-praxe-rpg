@@ -1,7 +1,7 @@
 package com.company.Entities;
 
 import com.company.Items.StarterItems;
-import com.company.Main;
+import com.company.utils.TextUtils;
 
 import java.util.Arrays;
 
@@ -14,10 +14,10 @@ public class Creation {
     private static String iRole;
 
     public static void enterRace() {
-        switch (sRace = Main.scan.nextLine().toLowerCase()) {
+        switch (sRace = TextUtils.nextLine().toLowerCase()) {
             case "human", "voidborn", "golem", "demon", "yordle", "wraith", "troll", "vastaya" -> race = Races.valueOf(sRace.toUpperCase());
             default -> {
-                System.out.println("Invalid input");
+                TextUtils.invalidInput();
                 enterRace();
             }
         }
@@ -33,7 +33,7 @@ public class Creation {
     }
 
     public static void enterRole() {
-        switch (iRole = Main.scan.nextLine().toLowerCase()) {
+        switch (iRole = TextUtils.nextLine().toLowerCase()) {
             case "warrior" -> {
                 role = 0;
                 return;
@@ -61,7 +61,7 @@ public class Creation {
             return;
         }
         System.out.println("What is your desired name?");
-        String name = Main.scan.nextLine();
+        String name = TextUtils.nextLine();
 
         System.out.println("What is your desired race? Available: " + Arrays.toString(Races.values()));
         enterRace();
@@ -72,10 +72,10 @@ public class Creation {
         Player player = new Player(name, 1, race, race.getRole()[role], race.getHp()[role], race.getDmg()[role]);
         switch (player.getRole()) {
             case "Warrior" -> {
-                player.setEquippedWeapon(StarterItems.DS.getItem());
+                player.setEquippedSword(StarterItems.DS.getItem());
             }
             case "Archer", "Assassin" -> {
-                player.setEquippedWeapon(StarterItems.DB.getItem());
+                player.setEquippedSword(StarterItems.DSB.getItem());
             }
         }
         switch (count) {
@@ -95,10 +95,6 @@ public class Creation {
                 Characters.FIFTH_CHARACTER.setPlayer(player);
             }
         }
-    }
-
-    public static void delete() {
-        count--;
     }
 
 }

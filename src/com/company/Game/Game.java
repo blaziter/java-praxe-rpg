@@ -2,12 +2,8 @@ package com.company.Game;
 
 import com.company.Entities.Characters;
 import com.company.Entities.Creation;
-import com.company.Items.Armors;
-import com.company.Items.Inventory;
-import com.company.Items.Swords;
-import com.company.Main;
-
-import java.util.Arrays;
+import com.company.Items.*;
+import com.company.utils.TextUtils;
 
 public class Game {
 
@@ -15,12 +11,12 @@ public class Game {
     public static int dungCount = 0;
 
     public static void setDifficulty() {
-        switch (Main.scan.nextLine().trim().toLowerCase()) {
+        switch (TextUtils.nextLine().trim().toLowerCase()) {
             case "easy" -> difficulty = "easy";
             case "normal" -> difficulty = "normal";
             case "hard" -> difficulty = "hard";
             default -> {
-                System.out.println("Invalid input");
+                TextUtils.invalidInput();
                 setDifficulty();
             }
         }
@@ -53,29 +49,23 @@ public class Game {
 
     public static void printOptions() {
         System.out.println("What would you like to do?");
-        System.out.println("0 - Enter a dungeon"); //done; fight done, added armor and reduces incoming dmg, dungeon gen done, boss fight fixed
-        System.out.println("1 - Show character statuses"); //done
-        System.out.println("2 - Enter a shop"); //almost done; need to finish buy and sell
-        System.out.println("3 - Manage inventory"); //wip
-        System.out.println("4 - Exit"); //done
-    }
-
-    public static void printPlayers() {
-        for (int i = 0; i < Characters.values().length; i++) {
-            if (Characters.values()[i].getPlayer() != null) System.out.println(Characters.values()[i].getPlayer());
-        }
+        System.out.println("0 - Enter a dungeon");
+        System.out.println("1 - Show character statuses");
+        System.out.println("2 - Enter a shop");
+        System.out.println("3 - Manage inventory");
+        System.out.println("4 - Exit");
     }
 
     public static void game() {
         printOptions();
-        switch (Main.scan.nextInt()) {
+        switch (TextUtils.nextInt()) {
             case 0 -> {
                 dungCount++;
 				Dungeon.genDung();
                 game();
             }
             case 1 -> {
-                printPlayers();
+                TextUtils.printPlayers();
                 try {
                     Thread.sleep(1500);
                 } catch (InterruptedException e) {
@@ -84,7 +74,7 @@ public class Game {
                 game();
             }
             case 2 -> {
-                shopkeeper();
+                Shopkeeper.shopkeeper();
                 game();
             }
             case 3 -> {
@@ -95,79 +85,16 @@ public class Game {
                 exit();
             }
             default -> {
-                System.out.println("Invalid choice");
+                TextUtils.invalidInput();
                 game();
             }
         }
     }
 
-    public static void shopkeeper() {
-        System.out.println("Welcome to a shop!\nWhat would you like to do?");
-        System.out.println("0 - Buy an item\n1 - Sell an item\n2 - Exit");
-        switch (Main.scan.nextInt()) {
-            case 0 -> {
-                buy();
-                shopkeeper();
-            }
-            case 1 -> {
-                sell();
-                shopkeeper();
-            }
-            case 2 -> {
-                return;
-            }
-            default -> {
-                System.out.println("Invalid choice");
-                shopkeeper();
-            }
-        }
-    }
-
-    public static void buy() {
-        System.out.println("What would you like to buy?\n0 - Buy a weapon\n1 - Buy an armor\n2 - Buy a new player\n3 - Exit buy menu");
-        switch (Main.scan.nextInt()) {
-            case 0 -> {
-                System.out.println(Arrays.toString(Swords.values()));
-            }
-            case 1 -> {
-                System.out.println(Arrays.toString(Armors.values()));
-            }
-            case 2 -> {
-                Creation.create();
-            }
-            case 3 -> {
-                return;
-            }
-            default -> {
-                System.out.println("Invalid choice");
-                sell();
-            }
-        }
-    }
-
-    public static void sell() {
-        System.out.println("What would you like to sell?\n0 - Sell an item\n1 - Sell a player\n2 - Exit sell menu");
-        switch (Main.scan.nextInt()) {
-            case 0 -> {
-
-            }
-            case 1 -> {
-                Creation.delete();
-            }
-            case 2 -> {
-                return;
-            }
-            default -> {
-                System.out.println("Invalid choice");
-                sell();
-            }
-        }
-    }
-
     public static void exit() {
-        Main.scan.nextLine();
-        System.out.println("There isn't a saving system!\nAre you sure? y / n");
-        switch (Main.scan.nextLine()) {
+        TextUtils.magic();
+        System.out.println("There's not a saving system!\nAre you sure? y / n");
+        switch (TextUtils.nextLine()) {
             case "y", "yes" -> {
                 System.exit(0);
             }
@@ -175,7 +102,7 @@ public class Game {
                 game();
             }
             default -> {
-                System.out.println("Invalid choice");
+                TextUtils.invalidInput();
                 exit();
             }
         }

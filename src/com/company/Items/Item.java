@@ -9,15 +9,22 @@ public abstract class Item {
     private double hp;
     private double armor;
 
-    public Item(String name, double dmg) {
+    public Item(String name, double hp) {
         this.name = name;
-        this.dmg = dmg;
+        this.hp = hp;
     }
 
-    public Item(String name, double dmg, double crit) {
+    public Item(String name, double hp, double armor) {
         this.name = name;
-        this.dmg = dmg;
-        this.crit = crit;
+        this.hp = hp;
+        this.armor = armor;
+    }
+
+    public Item(String name, double hp, double armor, int cost) {
+        this.name = name;
+        this.hp = hp;
+        this.armor = armor;
+        this.cost = cost;
     }
 
     public Item(String name, double dmg, double crit, double lifeSteal, int cost) {
@@ -74,5 +81,9 @@ public abstract class Item {
 
     public double getArmor() {
         return armor;
+    }
+
+    public double getCost() {
+        return cost;
     }
 }

@@ -3,10 +3,7 @@ package com.company.Game;
 import com.company.Entities.*;
 import com.company.Items.DropItems;
 import com.company.Items.Inventory;
-import com.company.Main;
-import jaco.mp3.player.MP3Player;
-
-import java.io.File;
+import com.company.utils.TextUtils;
 
 public class Fight {
     private static boolean isRunning = true;
@@ -43,24 +40,20 @@ public class Fight {
     private static void printEntities(Player player, Enemy boss) {
         System.out.println(player);
         System.out.println(boss);
-        if (boss.getName().equals("Malphite")) {
-            MP3Player malphite = new MP3Player();
-            malphite.addToPlayList(new File("src/com/company/Sounds/Malphite_Ban.mp3"));
-            malphite.addToPlayList(new File("src/com/company/Sounds/Malphite_Select.mp3"));
-            malphite.play();
-            System.out.println("You will lose!\nRock solid!");
-        }
+        TextUtils.checkMalphite(boss);
     }
 
     private static void round(Characters player, Enemies enemy) {
         System.out.println(player.getPlayer().getName() + "'s turn!\nEnter your action\n0 = attack\n1 = block");
-        switch (Main.scan.nextLine()) {
+        switch (TextUtils.nextLine()) {
             case "0" -> {
                 System.out.println(player.getPlayer().getName() + " attacked");
                 double d = Math.random();
                 if (d < 0.5) {
                     System.out.println(enemy.getEnemy().getName() + " attacked");
                     if (enemy.getEnemy().getEquippedArmor() != null) enemy.getEnemy().setHp(Math.floor(enemy.getEnemy().getHp() + (100 / (100 + enemy.getEnemy().getEquippedArmor().getArmor())) - player.getPlayer().getDmg()));
+                    if (player.getPlayer().getEquippedSword() != null)
+                        if (Math.random() < player.getPlayer().getEquippedSword().getCrit()) enemy.getEnemy().setHp(Math.floor(enemy.getEnemy().getHp() - (1 + (player.getPlayer().getEquippedSword().getCrit() * (0.75 + player.getPlayer().getDmg())))));
                     else enemy.getEnemy().setHp(Math.floor(enemy.getEnemy().getHp() - player.getPlayer().getDmg()));
                     if (isEnemyDead(player, enemy)) {
                         return;
@@ -82,6 +75,8 @@ public class Fight {
                 if (d < 0.5) {
                     System.out.println(enemy.getEnemy().getName() + " has attacked");
                     if (player.getPlayer().getEquippedArmor() != null) player.getPlayer().setHp(Math.floor(player.getPlayer().getHp() + (100 / (100 + player.getPlayer().getEquippedArmor().getArmor())) - (enemy.getEnemy().getDmg() / 3)));
+                    if (enemy.getEnemy().getEquippedSword() != null)
+                        if (Math.random() < enemy.getEnemy().getEquippedSword().getCrit()) player.getPlayer().setHp(Math.floor(player.getPlayer().getHp() - (1 + (enemy.getEnemy().getEquippedSword().getCrit() * (0.75 + enemy.getEnemy().getDmg())))));
                     else player.getPlayer().setHp(Math.floor(player.getPlayer().getHp() - (enemy.getEnemy().getDmg() / 3)));
                     if(isPlayerDead(player)) {
                         return;
@@ -100,13 +95,15 @@ public class Fight {
 
     private static void round(Player player, Enemy boss) {
         System.out.println(player.getName() + "'s turn!\nEnter your action\n0 = attack\n1 = block");
-        switch (Main.scan.nextLine()) {
+        switch (TextUtils.nextLine()) {
             case "0" -> {
                 System.out.println(player.getName() + " attacked");
                 double d = Math.random();
                 if (d < 0.5) {
                     System.out.println(boss.getName() + " attacked");
                     if (boss.getEquippedArmor() != null) boss.setHp(Math.floor(boss.getHp() + (100 / (100 + boss.getEquippedArmor().getArmor())) - player.getDmg()));
+                    if (player.getEquippedSword() != null)
+                        if (Math.random() < player.getEquippedSword().getCrit()) boss.setHp(Math.floor(boss.getHp() - (1 + (player.getEquippedSword().getCrit() * (0.75 + player.getDmg())))));
                     else boss.setHp(Math.floor(boss.getHp() - player.getDmg()));
                     if (isEnemyDead(player, boss)) {
                         return;
@@ -128,6 +125,8 @@ public class Fight {
                 if (d < 0.5) {
                     System.out.println(boss.getName() + " has attacked");
                     if (player.getEquippedArmor() != null) player.setHp(Math.floor(player.getHp() + (100 / (100 + player.getEquippedArmor().getArmor())) - (boss.getDmg() / 3)));
+                    if (boss.getEquippedSword() != null)
+                        if (Math.random() < boss.getEquippedSword().getCrit()) player.setHp(Math.floor(player.getHp() - (1 + (boss.getEquippedSword().getCrit() * (0.75 + boss.getDmg())))));
                     else player.setHp(Math.floor(player.getHp() - (boss.getDmg() / 3)));
                     if(isPlayerDead(player)) {
                         return;
@@ -185,8 +184,7 @@ public class Fight {
             player.levelUp(player);
             Inventory.golds += bounty;
             DropItems.getDroppedItem();
-            System.out.println("You have slain an enemy! Gained " + bounty + " golds and leveled up!");
-            boss = null;
+            System.out.println("You have slain " + boss.getName() + "! Gained " + bounty + " golds and leveled up!");
             return true;
         }
         return false;

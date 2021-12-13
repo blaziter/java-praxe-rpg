@@ -3,7 +3,7 @@ package com.company.Game;
 import com.company.Entities.Boss;
 import com.company.Entities.Characters;
 import com.company.Entities.Enemies;
-import com.company.Main;
+import com.company.utils.TextUtils;
 
 public class Dungeon {
     private static double roomCount;
@@ -32,14 +32,13 @@ public class Dungeon {
             }
             if (i == roomCount - 1) {
                 System.out.println("Please select which character will fight with a boss");
-                Game.printPlayers();
+                TextUtils.printPlayers();
                 int selected;
                 do {
-                    selected = Main.scan.nextInt();
+                    selected = TextUtils.nextInt();
                     if (selected < 0 || selected > 4 || Characters.values()[selected].getPlayer() == null) System.out.println("Invalid input or your character does not exist");
                 } while (selected < 0 || selected > 4 || Characters.values()[selected].getPlayer() == null);
-                Fight.fight(Characters.values()[selected].getPlayer(), Boss.values()[Boss.values().length - 4].getBoss());
-                //Fight.fight(Characters.values()[selected].getPlayer(), Boss.values()[(int) Math.floor(Math.random() * (Boss.values().length - 1))].getBoss());
+                Fight.fight(Characters.values()[selected].getPlayer(), Boss.values()[(int) Math.floor(Math.random() * (Boss.values().length - 1))].getBoss());
             }
         }
 

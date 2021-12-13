@@ -13,13 +13,13 @@ public class Player extends Entity implements IEquipment {
         super(name, lvl, race, role, hp, dmg);
     }
 
-    public Player(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
-        super(name, lvl, race, role, hp, dmg, equippedWeapon, equippedArmor);
+    public Player(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedSword, Item equippedArmor) {
+        super(name, lvl, race, role, hp, dmg, equippedSword, equippedArmor);
     }
 
     @Override
-    public void equipWeapon(Item weapon) {
-        setEquippedWeapon(weapon);
+    public void equipSword(Item sword) {
+        setEquippedSword(sword);
     }
 
     @Override
