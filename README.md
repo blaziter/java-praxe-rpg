@@ -3,3 +3,4 @@
 ### finish shop, manage inv;
 ### done dungeon gen, added golds into inv
 ### need to finish shop and inv
+# FINISHED XDDDDDD
