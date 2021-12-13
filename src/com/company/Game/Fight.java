@@ -3,6 +3,9 @@ package com.company.Game;
 import com.company.Entities.*;
 import com.company.Items.Inventory;
 import com.company.Main;
+import jaco.mp3.player.MP3Player;
+
+import java.io.File;
 
 public class Fight {
     private static boolean isRunning = true;
@@ -39,6 +42,13 @@ public class Fight {
     private static void printEntities(Player player, Enemy boss) {
         System.out.println(player);
         System.out.println(boss);
+        if (boss.getName().equals("Malphite")) {
+            MP3Player malphite = new MP3Player();
+            malphite.addToPlayList(new File("src/com/company/Sounds/Malphite_Ban.mp3"));
+            malphite.addToPlayList(new File("src/com/company/Sounds/Malphite_Select.mp3"));
+            malphite.play();
+            System.out.println("You will lose!\nRock solid!");
+        }
     }
 
     private static void round(Characters player, Enemies enemy) {

@@ -29,13 +29,14 @@ public class Game {
     public static int getDifficulty() {
         switch (difficulty) {
             case "easy" -> {
+                if (dungCount < 2) return dungCount;
                 return dungCount-1;
             }
             case "medium" -> {
                 return dungCount;
             }
             case "hard" -> {
-                return dungCount+2;
+                return dungCount+1;
             }
         }
         return 0;
@@ -59,6 +60,12 @@ public class Game {
         System.out.println("4 - Exit"); //done
     }
 
+    public static void printPlayers() {
+        for (int i = 0; i < Characters.values().length; i++) {
+            if (Characters.values()[i].getPlayer() != null) System.out.println(Characters.values()[i].getPlayer());
+        }
+    }
+
     public static void game() {
         printOptions();
         switch (Main.scan.nextInt()) {
@@ -68,9 +75,7 @@ public class Game {
                 game();
             }
             case 1 -> {
-                for (int i = 0; i < Characters.values().length; i++) {
-                    if (Characters.values()[i].getPlayer() != null) System.out.println(Characters.values()[i].getPlayer());
-                }
+                printPlayers();
                 try {
                     Thread.sleep(1500);
                 } catch (InterruptedException e) {

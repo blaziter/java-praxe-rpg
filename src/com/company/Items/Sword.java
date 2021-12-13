@@ -1,17 +1,6 @@
 package com.company.Items;
 
 public class Sword extends Item {
-    /*SERPENTS_FANG("Serpent's Fang" , 61),
-    STORMRAZOR("Stormrazor", 67, 0, 0.2),
-    MURAMANA("Muramana", 65),
-    YOUMUUS_GHOSTBLADE("Youmuu's Ghostblade", 64),
-    WITS_END("Wit's End", 56),
-    DEATHS_DANCE("Death's Dance", 55),
-    BOTRK("Blade of the Ruined King", 83, 0.1),
-    DUSKBLADE("Duskblade of Drakktar", 69),
-    IE("Infinity Edge", 70, 0, 0.2),
-    BLOODTHIRSTER("Bloodthirster", 80, 0.2);*/
-
     String name;
     double dmg;
     double crit;
