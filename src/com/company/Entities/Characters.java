@@ -1,7 +1,5 @@
 package com.company.Entities;
 
-import com.company.Main;
-
 public enum Characters {
     FIRST_CHARACTER(),
     SECOND_CHARACTER(),

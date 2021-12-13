@@ -1,28 +1,15 @@
 package com.company.Items;
 
 public class Armor extends Item {
-
-    String name;
-    double hp;
-
     public Armor(String name, double hp) {
-        this.name = name;
-        this.hp = hp;
+        super(name, hp);
     }
 
-    public String getName() {
-        return name;
+    public Armor(String name, double hp, int cost) {
+        super(name, hp, cost);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getHp() {
-        return hp;
-    }
-
-    public void setHp(double hp) {
-        this.hp = hp;
+    public Armor(String name, double hp, double armor, int cost) {
+        super(name, hp, armor, cost);
     }
 }

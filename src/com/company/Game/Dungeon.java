@@ -1,14 +1,12 @@
 package com.company.Game;
 
+import com.company.Entities.Boss;
 import com.company.Entities.Characters;
 import com.company.Entities.Enemies;
+import com.company.utils.TextUtils;
 
 public class Dungeon {
     private static double roomCount;
-        /*3 - 8 easy
-		5 - 12 medium
-		10 - 18 hard
-        random dungeon length last number = boss*/
 
     private static void setRoomCount() {
         switch (Game.difficulty) {
@@ -27,10 +25,23 @@ public class Dungeon {
     public static void genDung() {
         setRoomCount();
         for (int i = 0; i < roomCount; i++) {
-            System.out.println((i + 1) + ". room out of " + (int) roomCount);
-            Room.showEnemies();
-            Fight.setup(Characters.values(), Enemies.values());
+            System.out.println((i + 1) + ". room out of " + (int) (roomCount));
+            if (i < roomCount - 1) {
+                Room.showEnemies();
+                Fight.setup(Characters.values(), Enemies.values());
+            }
+            if (i == roomCount - 1) {
+                System.out.println("Please select which character will fight with a boss");
+                TextUtils.printPlayers();
+                int selected;
+                do {
+                    selected = TextUtils.nextInt();
+                    if (selected < 0 || selected > 4 || Characters.values()[selected].getPlayer() == null) System.out.println("Invalid input or your character does not exist");
+                } while (selected < 0 || selected > 4 || Characters.values()[selected].getPlayer() == null);
+                Fight.fight(Characters.values()[selected].getPlayer(), Boss.values()[(int) Math.floor(Math.random() * (Boss.values().length - 1))].getBoss());
+            }
         }
+
     }
 
 }

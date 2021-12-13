@@ -9,7 +9,7 @@ public abstract class Entity  {
     private Races race;
     private double hp;
     private double dmg;
-    private Item equippedWeapon;
+    private Item equippedSword;
     private Item equippedArmor;
 
     public Entity(String name, double lvl, Races race, String role, double hp, double dmg) {
@@ -21,14 +21,14 @@ public abstract class Entity  {
         this.dmg = dmg;
     }
 
-    public Entity(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
+    public Entity(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedSword, Item equippedArmor) {
         this.name = name;
         this.lvl = lvl;
         this.race = race;
         this.role = role;
         this.hp = Math.floor(hp + (this.lvl * 35.92) + equippedArmor.getHp());
-        this.dmg = dmg + equippedWeapon.getDmg();
-        this.equippedWeapon = equippedWeapon;
+        this.dmg = dmg + equippedSword.getDmg();
+        this.equippedSword = equippedSword;
         this.equippedArmor = equippedArmor;
     }
 
@@ -85,12 +85,12 @@ public abstract class Entity  {
         this.dmg = dmg;
     }
 
-    public Item getEquippedWeapon() {
-        return equippedWeapon;
+    public Item getEquippedSword() {
+        return equippedSword;
     }
 
-    public void setEquippedWeapon(Item equippedWeapon) {
-        this.equippedWeapon = equippedWeapon;
+    public void setEquippedSword(Item equippedWeapon) {
+        this.equippedSword = equippedWeapon;
     }
 
     public Item getEquippedArmor() {
@@ -103,13 +103,41 @@ public abstract class Entity  {
 
     @Override
     public String toString() {
-        return  "name='" + name + '\'' +
+        //needs to be done this way, otherwise it crashes
+        if (equippedSword != null) return  "name='" + name + '\'' +
                 ", lvl=" + lvl +
                 ", race='" + race + '\'' +
                 ", role='" + role + '\'' +
                 ", hp=" + hp +
                 ", dmg=" + dmg +
-                ", equippedWeapon=" + equippedWeapon +
+                ", equippedWeapon=" + equippedSword.getName() +
+                ", equippedArmor=" + equippedArmor;
+
+        if (equippedArmor != null) return  "name='" + name + '\'' +
+                ", lvl=" + lvl +
+                ", race='" + race + '\'' +
+                ", role='" + role + '\'' +
+                ", hp=" + hp +
+                ", dmg=" + dmg +
+                ", equippedWeapon=" + equippedSword +
+                ", equippedArmor=" + equippedArmor.getName();
+
+        if (equippedArmor != null && equippedSword != null) return  "name='" + name + '\'' +
+                ", lvl=" + lvl +
+                ", race='" + race + '\'' +
+                ", role='" + role + '\'' +
+                ", hp=" + hp +
+                ", dmg=" + dmg +
+                ", equippedWeapon=" + equippedSword.getName() +
+                ", equippedArmor=" + equippedArmor.getName();
+
+        return "name='" + name + '\'' +
+                ", lvl=" + lvl +
+                ", race='" + race + '\'' +
+                ", role='" + role + '\'' +
+                ", hp=" + hp +
+                ", dmg=" + dmg +
+                ", equippedWeapon=" + equippedSword +
                 ", equippedArmor=" + equippedArmor;
     }
 }

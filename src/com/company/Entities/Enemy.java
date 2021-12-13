@@ -9,8 +9,8 @@ public class Enemy extends Entity implements IFight {
         super(name, lvl, race, role, hp, dmg);
     }
 
-    public Enemy(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedWeapon, Item equippedArmor) {
-        super(name, lvl, race, role, hp, dmg, equippedWeapon, equippedArmor);
+    public Enemy(String name, double lvl, Races race, String role, double hp, double dmg, Item equippedSword, Item equippedArmor) {
+        super(name, lvl, race, role, hp, dmg, equippedSword, equippedArmor);
     }
 
     @Override

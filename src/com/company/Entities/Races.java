@@ -48,7 +48,7 @@ public enum Races {
     ),
     VASTAYA(
             new String[] {"Zeuistey", "Lerefey", "Perxes", "Foerlei", "Aerlei", "Axofero", "Nomberle", "Perferele"},
-            new String[] {"Warrior", "Archer", "Assassin"},
+            new String[] {"Warrior", "Assassin"},
             new double[] {500, 300},
             new double[] {36, 15}
     );
@@ -57,7 +57,6 @@ public enum Races {
     private String[] role;
     private double[] hp;
     private double[] dmg;
-    private double[] mana;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
 

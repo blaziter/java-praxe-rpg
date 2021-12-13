@@ -2,7 +2,7 @@ package com.company.Items;
 
 public interface IEquipment {
 
-    void equipWeapon(Item weapon);
+    void equipSword(Item sword);
     void equipArmor(Item armor);
     void unequip();
 }

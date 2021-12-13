@@ -5,45 +5,85 @@ public abstract class Item {
     private double dmg;
     private double crit;
     private double lifeSteal;
+    private int cost;
     private double hp;
+    private double armor;
+
+    public Item(String name, double hp) {
+        this.name = name;
+        this.hp = hp;
+    }
+
+    public Item(String name, double hp, double armor) {
+        this.name = name;
+        this.hp = hp;
+        this.armor = armor;
+    }
+
+    public Item(String name, double hp, double armor, int cost) {
+        this.name = name;
+        this.hp = hp;
+        this.armor = armor;
+        this.cost = cost;
+    }
+
+    public Item(String name, double dmg, double crit, double lifeSteal, int cost) {
+        this.name = name;
+        this.dmg = dmg;
+        this.crit = crit;
+        this.lifeSteal = lifeSteal;
+        this.cost = cost;
+    }
+
+    public Item(String name, double dmg, double crit, double lifeSteal, int cost, double hp) {
+        this.name = name;
+        this.dmg = dmg;
+        this.crit = crit;
+        this.lifeSteal = lifeSteal;
+        this.cost = cost;
+        this.hp = hp;
+    }
+
+    public Item(String name, double dmg, double crit, double lifeSteal, int cost, double hp, double armor) {
+        this.name = name;
+        this.dmg = dmg;
+        this.crit = crit;
+        this.lifeSteal = lifeSteal;
+        this.cost = cost;
+        this.hp = hp;
+        this.armor = armor;
+    }
+
+    public Item() {
+
+    }
+
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getDmg() {
         return dmg;
     }
 
-    public void setDmg(double dmg) {
-        this.dmg = dmg;
-    }
-
     public double getCrit() {
         return crit;
-    }
-
-    public void setCrit(double crit) {
-        this.crit = crit;
     }
 
     public double getLifeSteal() {
         return lifeSteal;
     }
 
-    public void setLifeSteal(double lifeSteal) {
-        this.lifeSteal = lifeSteal;
-    }
-
     public double getHp() {
         return hp;
     }
 
-    public void setHp(double hp) {
-        this.hp = hp;
+    public double getArmor() {
+        return armor;
+    }
+
+    public double getCost() {
+        return cost;
     }
 }
